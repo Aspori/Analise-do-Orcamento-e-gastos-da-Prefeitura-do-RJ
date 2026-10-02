@@ -159,11 +159,11 @@ ORDER BY tipos DESC;
 
 ### Quanto a Prefeitura deixou de arrecadar por ano?
 
-2021 R$ 522.135.664,00
-2022 R$ 606.313.571,03
-2023 R$ 9.558.385,85
-2024 R$ 992.423.416,76
-2025 R$ 1.613.078.811,08
+2021 R$ 522.135.664,00 <br>
+2022 R$ 606.313.571,03 <br>
+2023 R$ 9.558.385,85 <br>
+2024 R$ 992.423.416,76 <br>
+2025 R$ 1.613.078.811,08 <br>
 
 ![Renúncia fiscal por ano](graficos/1_total_por_ano.png)
 
