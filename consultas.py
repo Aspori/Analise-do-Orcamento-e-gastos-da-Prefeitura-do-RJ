@@ -1,6 +1,9 @@
 from pathlib import Path
 import sqlite3
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+
 
 pasta = Path(__file__).parent
 con = sqlite3.connect(pasta / 'data' / 'data.db')
@@ -125,5 +128,55 @@ checagem = consulta('''
 print(checagem)
 print()
 
+
+
+
+# pasta para salvar as imagens
+pasta_graficos = pasta / 'graficos'
+pasta_graficos.mkdir(exist_ok=True)
+
+# formata os valores do eixo em milhões (ex: 1.5M)
+def em_milhoes(x, pos):
+    return f'{x / 1e6:,.0f} mi'
+
+formato = FuncFormatter(em_milhoes)
+
+# Gráfico 1: total por ano (linha)
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.plot(resultado['ano'], resultado['total'], marker='o')
+ax.set_title('Renúncia fiscal por ano')
+ax.set_xlabel('Ano')
+ax.set_ylabel('Valor total')
+ax.yaxis.set_major_formatter(formato)
+ax.set_xticks(resultado['ano'])
+ax.grid(alpha=0.3)
+fig.tight_layout()
+fig.savefig(pasta_graficos / '1_total_por_ano.png', dpi=150)
+
+# Gráfico 2: total por tipo de renúncia (barras)
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.bar(tipo_pesado['tipo_renuncia'], tipo_pesado['total'])
+ax.set_title('Renúncia fiscal por tipo')
+ax.set_ylabel('Valor total')
+ax.yaxis.set_major_formatter(formato)
+ax.grid(axis='y', alpha=0.3)
+ax.set_axisbelow(True) 
+plt.xticks(rotation=30, ha='right')
+fig.tight_layout()
+fig.savefig(pasta_graficos / '2_total_por_tipo.png', dpi=150)
+
+# Gráfico 3: top 10 CNPJs (barras horizontais)
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.barh(top10['nome_titular'], top10['total'])
+ax.invert_yaxis()  # maior fica em cima
+ax.set_title('Top 10 maiores beneficiados')
+ax.set_xlabel('Valor total')
+ax.xaxis.set_major_formatter(formato)
+ax.grid(axis='x', alpha=0.3)
+ax.set_axisbelow(True)
+fig.tight_layout()
+fig.savefig(pasta_graficos / '3_top10_cnpj.png', dpi=150)
+
+plt.show()
 
 con.close()

@@ -155,9 +155,31 @@ ORDER BY tipos DESC;
 
 **Gráficos**
 
-<!-- Troque pelos seus prints, por exemplo: -->
-<!-- ![Renúncia por ano](imagens/renuncia_por_ano.png) -->
-<!-- ![Top 10 empresas](imagens/top10.png) -->
+## Perguntas e respostas
+
+### Quanto a Prefeitura deixou de arrecadar por ano?
+
+2021 R$ 522.135.664,00
+2022 R$ 606.313.571,03
+2023 R$ 9.558.385,85
+2024 R$ 992.423.416,76
+2025 R$ 1.613.078.811,08
+
+![Renúncia fiscal por ano](graficos/1_total_por_ano.png)
+
+### Qual tipo de renúncia pesa mais?
+
+O IPTU é o tipo que mais pesa, com X% do total.
+
+![Renúncia fiscal por tipo](graficos/2_total_por_tipo.png)
+
+### Quais são as 10 empresas que mais receberam benefício?
+
+Do Top1 ao Top10 elas são respectivamente:
+
+MUNICIPIO DO RIO DE JANEIRO, UNIAO FEDERAL, ESTADO DO RIO DE JANEIRO, PREFEITURA MUNICIPAL DO RIO DE JANEIRO, MINISTERIO DA GESTAO E DA INOVACAO EM SERVICOS..., UNIAO FEDERAL, UNIVERSIDADE DO ESTADO DO RIO DE JANEIRO, FACULDADES CATOLICAS, MITRA ARQUIEPISCOPAL DO RIO DE JANEIRO, IGREJA UNIVERSAL DO REINO DE DEUS
+
+![Top 10 beneficiados](graficos/3_top10_cnpj.png)
 
 **Principais conclusões**
 
