@@ -7,6 +7,7 @@ df = pd.read_excel('data/data.xlsx', header=5)
 
 df.columns = ['ano', 'tipo_renuncia', 'cnpj', 'nome_titular', 'valor_total', 'quantidade_inscricao', 'inscricao']
 
+# tira as linhas que estão completamente vazias
 df = df.dropna(how='all')
 
 # Limpa valor total, removendo o símbolo de moeda e convertendo para float
@@ -17,9 +18,15 @@ if df['valor_total'].dtype == 'object':
                           .str.replace(',', '.', regex=False)
                           .astype(float))
 
+#tira todas as linhas duplicadas
 df = df.drop_duplicates()
 
 con = sqlite3.connect('data/data.db')
-df.to_sql('data', con, if_exists='replace', index=False)
+df.to_sql('renuncia', con, if_exists='replace', index=False)
+
+print(df.shape)
+print(df['ano'].unique())
+print(df['tipo_renuncia'].unique())
+print(df['valor_total'].describe())
 
 con.close()
