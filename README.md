@@ -169,7 +169,7 @@ ORDER BY tipos DESC;
 
 ### Qual tipo de renúncia pesa mais?
 
-O IPTU é o tipo que mais pesa, com X% do total.
+O IPTU é o tipo que mais pesa.
 
 ![Renúncia fiscal por tipo](graficos/2_total_por_tipo.png)
 
@@ -183,9 +183,7 @@ MUNICIPIO DO RIO DE JANEIRO, UNIAO FEDERAL, ESTADO DO RIO DE JANEIRO, PREFEITURA
 
 **Principais conclusões**
 
-1. _Descobri que..._
-2. _Descobri que..._
-3. _Descobri que..._
+1. (Em desenvolvimento)
 
 ## 💡 O que eu aprendi
 
