@@ -18,6 +18,10 @@ if df['valor_total'].dtype == 'object':
                           .str.replace(',', '.', regex=False)
                           .astype(float))
 
+df["cnpj"] = (df["cnpj"].astype(str)
+              .str.replace(r"\D", "", regex=True)   # tira tudo que não é dígito
+              .str.zfill(14))                        # recoloca zeros à esquerda
+
 #tira todas as linhas duplicadas
 df = df.drop_duplicates()
 
