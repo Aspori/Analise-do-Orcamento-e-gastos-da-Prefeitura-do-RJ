@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import sqlite3
+import openpyxl
+
+df = pd.read_excel('data/data.xlsx', header=5)
+
+df.columns = ['ano', 'tipo_renuncia', 'cnpj', 'nome_titular', 'valor_total', 'quantidade_inscricao', 'inscricao']
+
+df = df.dropna(how='all')
+
+# Limpa valor total, removendo o símbolo de moeda e convertendo para float
+if df['valor_total'].dtype == 'object':
+    df['valor_total'] = (df['valor_total'].astype(str)
+                          .str.replace('R$', '', regex=False)
+                          .str.replace('.', '', regex=False)
+                          .str.replace(',', '.', regex=False)
+                          .astype(float))
+
+df = df.drop_duplicates()
+
+con = sqlite3.connect('data/data.db')
+df.to_sql('data', con, if_exists='replace', index=False)
+
+con.close()
