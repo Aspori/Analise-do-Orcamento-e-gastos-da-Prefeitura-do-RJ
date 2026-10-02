@@ -194,7 +194,7 @@ MUNICIPIO DO RIO DE JANEIRO, UNIAO FEDERAL, ESTADO DO RIO DE JANEIRO, PREFEITURA
 
 ## 🚀 Próximos passos
 
-- [ ] Gerar os gráficos com matplotlib
+- [x] Gerar os gráficos com matplotlib
 - [ ] Escrever as conclusões da análise
 - [ ] Criar um notebook Jupyter contando a história dos dados
 - [ ] Comparar os tipos de renúncia ano a ano
